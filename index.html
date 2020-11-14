@@ -24,7 +24,7 @@
         <img :src="image" :alt="product" :class="{ 'out-of-stock-img': inventory <= 0}">
       </div>
       <div class="product-info">
-        <h1>{{ product }}</h1>
+        <h1>{{ title }}</h1>
 
         <p v-if="onSale"><b>Currently on sale!</b></p>
 
@@ -39,8 +39,8 @@
         <!--            <p v-show="inventory > 0">It's in stock!</p>-->
 
         <div style="display: flex">
-          <div v-for="variant in variants" :key="variant.id"
-               @mouseover="updateImage(variant.image)">
+          <div v-for="(variant, index) in variants" :key="variant.id"
+               @mouseover="updateProduct(index)">
             <span
               :style="{color: '#fff', backgroundColor: variant.color}">{{ variant.color }}</span><br>
             <img :src="variant.image" :alt="variant.color" style="width:100px; margin: 5px;">

@@ -3,10 +3,9 @@ const app = Vue.createApp({
     return {
       cart: 0,
       product: 'Vue3 Socks',
+      brand: 'Mastery',
       description: 'Vue3 test description',
-      image: './assets/images/socks_green.jpg',
-      inventory: 0,
-      onSale: true,
+      selectedVariant: 0,
       details: [
         '50% cotton',
         '50% wool',
@@ -22,8 +21,20 @@ const app = Vue.createApp({
         'XXXL'
       ],
       variants: [
-        { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
-        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg' },
+        {
+          id: 2234,
+          color: 'green',
+          image: './assets/images/socks_green.jpg',
+          inventory: 50,
+          onSale: false
+        },
+        {
+          id: 2235,
+          color: 'blue',
+          image: './assets/images/socks_blue.jpg',
+          inventory: 0,
+          onSale: true
+        },
       ],
       credits: {
         url: 'https://www.vuemastery.com/courses/intro-to-vue-3/',
@@ -38,8 +49,26 @@ const app = Vue.createApp({
     emptyCart() {
       this.cart = 0
     },
-    updateImage(image) {
-      this.image = image
+    updateProduct(index) {
+      this.selectedVariant = index;
+    }
+  },
+  computed: {
+    title() {
+      const saleText = this.onSale ? ' is on sale!' : '';
+      return this.brand + ' ' + this.product + ' ' + this.color + ' ' + saleText;
+    },
+    image() {
+      return this.variants[this.selectedVariant].image
+    },
+    inventory() {
+      return this.variants[this.selectedVariant].inventory
+    },
+    onSale() {
+      return this.variants[this.selectedVariant].onSale
+    },
+    color() {
+      return this.variants[this.selectedVariant].color
     }
   }
 })
