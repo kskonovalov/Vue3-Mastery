@@ -1,6 +1,7 @@
 const app = Vue.createApp({
-  data: function() {
+  data() {
     return {
+      cart: 0,
       product: 'Vue3 Socks',
       description: 'Vue3 test description',
       image: './assets/images/socks_green.jpg',
@@ -21,13 +22,24 @@ const app = Vue.createApp({
         'XXXL'
       ],
       variants: [
-        { id: 2234, color: 'green' },
-        { id: 2235, color: 'blue' },
+        { id: 2234, color: 'green', image: './assets/images/socks_green.jpg' },
+        { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg' },
       ],
       credits: {
         url: 'https://www.vuemastery.com/courses/intro-to-vue-3/',
         title: 'Intro to Vue 3'
       },
+    }
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1
+    },
+    emptyCart() {
+      this.cart = 0
+    },
+    updateImage(image) {
+      this.image = image
     }
   }
 })
