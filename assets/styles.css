@@ -75,6 +75,15 @@ label {
   margin-bottom: 5px;
 }
 
+.radio {
+  display: flex;
+  align-items: center;
+}
+.radio input {
+  width: 20%;
+  margin: 0;
+}
+
 li {
   font-size: 18px;
 }

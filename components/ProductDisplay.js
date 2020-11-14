@@ -37,6 +37,9 @@ app.component('product-display', {
             <img :src="variant.image" :alt="variant.color" style="width:100px; margin: 5px;">
           </div>
         </div>
+        
+        <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
       </div>
     </div>
   </div>`,
@@ -62,6 +65,7 @@ app.component('product-display', {
           onSale: true
         },
       ],
+      reviews: []
     }
   },
   methods: {
@@ -70,6 +74,9 @@ app.component('product-display', {
     },
     updateProduct(index) {
       this.selectedVariant = index;
+    },
+    addReview(review) {
+      this.reviews.push(review)
     }
   },
   computed: {
