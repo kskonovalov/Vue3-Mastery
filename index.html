@@ -6,7 +6,7 @@
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js" integrity="sha512-REb0S2epbS0XtS28ifNa1haxmTZigXjB+Tx5IHCvXZndWB2RL431Vt1qONzFoe0dPwA8WGow+xxkQwhVr44nRg==" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="app">
@@ -24,6 +24,17 @@
             <p v-else-if="inventory > 0">Almost sold out!</p>
             <p v-else>Out of stock</p>
 <!--            <p v-show="inventory > 0">It's in stock!</p>-->
+            <ul>
+              <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">
+              {{ variant.color }}
+            </div>
+            <p>Available sizes:</p>
+            <ul>
+              <li v-for="size in sizes" :id="size">{{ size }}</li>
+            </ul>
+
           </div>
         </div>
       </div>
