@@ -14,11 +14,11 @@
 <div id="app">
   <div class="nav-bar"></div>
 
-  <div class="cart">Cart({{ cart }})
+  <div class="cart">Cart({{ cart.length }})
     <button v-on:click="emptyCart">Empty cart</button>
   </div>
 
-  <product-display :premium="premium"></product-display>
+  <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
   <product-details></product-details>
 
   <p class="credits">Based on <a :href="credits.url" target="_blank"

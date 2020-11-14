@@ -1,7 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
-      cart: 0,
+      cart: [],
       premium: false,
       credits: {
         url: 'https://www.vuemastery.com/courses/intro-to-vue-3/',
@@ -10,8 +10,11 @@ const app = Vue.createApp({
     }
   },
   methods: {
+    updateCart(id) {
+      this.cart.push(id)
+    },
     emptyCart() {
-      this.cart = 0
+      this.cart = []
     },
   }
 })
